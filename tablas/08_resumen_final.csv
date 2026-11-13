@@ -1,0 +1,9 @@
+indicador,valor
+Filas originales (bank-full),"45,211"
+Filas finales,"45,208"
+Filas eliminadas,3
+Columnas originales,17
+Columnas tras preparación (análisis),40
+Columnas en df_modelo (con la objetivo),45
+Tasa de contratación original %,11.70
+Tasa de contratación final %,11.70

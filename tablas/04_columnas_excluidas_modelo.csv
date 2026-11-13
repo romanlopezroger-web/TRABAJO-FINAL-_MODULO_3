@@ -1,0 +1,6 @@
+columna,motivo_exclusion
+duration,Fuga de información: solo se conoce al terminar la llamada (advertencia del AED 2)
+y / yb,Es la variable objetivo
+pdays,Reemplazada por contactado_antes + dias_desde_contacto_previo
+"fecha_contacto, anio, trimestre",Año reconstruido (no es dato original) y no estaría disponible igual en producción
+"rango_edad, cuartil_saldo, rango_contactos",Versiones agrupadas de variables numéricas ya incluidas (solo para análisis)

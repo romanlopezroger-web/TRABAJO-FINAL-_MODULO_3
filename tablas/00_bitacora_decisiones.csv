@@ -1,0 +1,16 @@
+fase,paso,decision,justificacion,registros_afectados,filas_despues
+Integración,Selección de fuente,Se usa solo bank-full.csv; no se fusiona con bank.csv ni bank-additional,bank.csv es subconjunto exacto; bank-additional usa otra codificación y no tiene llave común (merge muchos-a-muchos),0,45211
+Columnas,Conversión de tipos,"8 variables → category, month → categoría ordenada, y → yb (0/1), enteros reducidos","Memoria, orden cronológico correcto de meses y variable objetivo numérica",11,45211
+Columnas,Fecha de contacto,Se reconstruyó anio y fecha_contacto usando el orden del archivo (cada retroceso de mes = año nuevo),El año no existe en el CSV; supuesto documentado (UCI: datos ordenados cronológicamente 2008-2010),45211,45211
+Columnas,Imputación job,'unknown' → moda según rango de edad + bandera job_imputada,"0,6 % de casos; ocupación asociada a la edad",288,45211
+Columnas,Imputación education,'unknown' → moda según ocupación + bandera education_imputada,"4,1 % de casos; educación asociada a la ocupación",1857,45211
+Columnas,contact / poutcome,'unknown' se conserva como categoría,"contact: 28,8 % y tasa distinta (señal); poutcome: significa 'sin campaña previa' (dato estructural)",37029,45211
+Columnas,pdays,pdays = -1 → NaN en dias_desde_contacto_previo + bandera contactado_antes (sin imputar),"-1 significa 'nunca contactado'; es un faltante estructural, no un valor numérico",36954,45211
+Columnas,Nuevas columnas,"Se crearon 21 columnas derivadas (balance_log, campaign_cap, n_deudas, trimestre, etc.)",Capturan relaciones no lineales y reducen el efecto de valores extremos (hallazgos del AED 2),21,45211
+Columnas,Exclusión de variables,"duration, pdays original y variables de fecha/agrupadas se excluyen de las features",duration es fuga de información; las demás son redundantes o no disponibles en producción,,45211
+Filas,Duplicados,Se verificó y se aplicó drop_duplicates sobre las 17 columnas originales,"Cero duplicados exactos ni contradictorios; la llamada incluye día, mes, duración y saldo, que casi nunca coinciden",0,45211
+Filas,Filtrado duration = 0,Se eliminan los registros con duration = 0,Llamadas sin conversación: no representan un contacto real (todas con y = no),3,45208
+Filas,Valores extremos,"No se eliminan atípicos de balance, campaign ni previous",Son valores posibles del negocio; se tratan con balance_log y topes campaign_cap / previous_cap,,45208
+Filas,Agrupación temporal,"Se agrupa por año, trimestre y año-mes con conteo y tasa de contratación",Valida la fecha reconstruida y detecta periodos con muy pocos contactos,,45208
+Filas,Agrupación de ocupación,"12 ocupaciones → 4 grupos (profesional, operativo, independiente, sin actividad)",Reduce categorías para análisis y permite comparar perfiles; no hay variable geográfica para agrupar por zona,,45208
+Formato,Codificación,"One-hot (drop_first) de job, marital, education, contact, month, poutcome; NaN de dias_desde_contacto_previo → 0",Los algoritmos necesitan entradas numéricas; contactado_antes conserva la información del faltante,44,45208
