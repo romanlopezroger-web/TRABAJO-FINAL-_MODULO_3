@@ -1,0 +1,3 @@
+columna_eliminada,se_reconstruye_con,registros_que_no_coinciden,motivo
+n_deudas,housing_bin + loan_bin,0,Suma exacta de dos columnas que sí quedan
+contactado_antes,dias_desde_contacto_previo (NaN → 0) > 0,0,Los días con 0 ya identifican a quien no tuvo contacto previo
