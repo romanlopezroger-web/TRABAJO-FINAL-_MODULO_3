@@ -1,0 +1,4 @@
+Partición,Registros,Negativos (0),Positivos (1),Tasa_Positivos_%
+Entrenamiento (Train 80%),36166,31935,4231,11.698833158214898
+Prueba (Test 20%),9042,7984,1058,11.700951117009511
+Población Total,45208,39919,5289,11.699256768713502
