@@ -1,0 +1,5 @@
+archivo,rol,filas,columnas,nulos_NaN
+bank-full.csv,Base principal (2008-2010),45211,17,0
+bank.csv,Muestra 10 % de bank-full,4521,17,0
+bank-additional-full.csv,Versión ampliada con indicadores económicos,41188,21,0
+bank-additional.csv,Muestra 10 % de bank-additional-full,4119,21,0

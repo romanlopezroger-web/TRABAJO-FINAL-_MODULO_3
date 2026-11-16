@@ -1,0 +1,13 @@
+regla,registros_que_incumplen,accion
+age fuera de 18-100,0,Conservar (ninguno)
+day fuera de 1-31,0,Conservar (ninguno)
+day imposible para el mes (ej. 31 jun),0,Conservar (ninguno)
+campaign < 1,0,Conservar (ninguno)
+pdays < -1,0,Conservar (ninguno)
+pdays/previous incoherentes,0,Conservar (ninguno)
+poutcome = unknown pero con pdays ≠ -1,5,Conservar y reportar (leve inconsistencia)
+duration = 0 s (llamada sin contacto real),3,ELIMINAR
+previous > 50 (valores como 275),4,Conservar; tratado con previous_cap
+campaign > 10,1196,Conservar; tratado con campaign_cap
+balance atípico (IQR),4729,Conservar; tratado con balance_log
+balance negativo,3766,Conservar; bandera balance_negativo
