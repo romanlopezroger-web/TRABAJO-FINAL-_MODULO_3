@@ -1,0 +1,3 @@
+Comparación,Δ AUC-PR (prueba),IC95 inf,IC95 sup,Diferencia significativa
+Gradient Boosting − Regresión logística,0.03977705166933304,0.024635216659355967,0.054816046368157005,Sí
+Gradient Boosting − Random Forest,0.005349223735606479,-0.007677018987939326,0.01964964821176927,No (IC incluye 0)
